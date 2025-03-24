@@ -1,14 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { Menu, X, Music } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +26,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: t('nav.home'), path: '/' },
-    { name: t('nav.events'), path: '/events' },
-    { name: t('nav.contact'), path: '/contact' },
+    { name: 'Startseite', path: '/' },
+    { name: 'Veranstaltungen', path: '/events' },
+    { name: 'Kontakt', path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -45,13 +43,14 @@ const Navbar = () => {
         <nav className="flex items-center justify-between py-4">
           <Link 
             to="/" 
-            className="relative z-10 text-folk-darkBrown font-serif text-2xl font-bold transition-all"
+            className="relative z-10 flex items-center font-serif text-2xl font-bold text-folk-darkBrown transition-all"
           >
+            <Music className="mr-2 h-6 w-6 text-folk-brown" />
             Volksmusik
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -82,12 +81,12 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 bg-white bg-opacity-95 z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed inset-0 z-40 transform bg-white bg-opacity-95 transition-transform duration-300 ease-in-out md:hidden ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="folk-container py-20">
-          <div className="flex flex-col space-y-8 items-center">
+          <div className="flex flex-col items-center space-y-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

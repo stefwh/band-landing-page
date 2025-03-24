@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { ArrowDownCircle } from 'lucide-react';
+import { ArrowDownCircle, Music } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -28,38 +28,102 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: 'url("https://images.unsplash.com/photo-1485833077593-4278bba3f11f?auto=format&fit=crop&q=80")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-    >
-      <div 
-        className="absolute inset-0 bg-black/30 backdrop-filter backdrop-blur-[2px]"
-        aria-hidden="true"
-      />
+    <section className="relative min-h-screen overflow-hidden bg-folk-cream/30">
+      <div className="absolute inset-0 z-0 grid grid-cols-4 grid-rows-2 gap-2 p-2 opacity-20">
+        <div className="col-span-2 row-span-2 overflow-hidden rounded-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1534883236291-28a1c5931263?auto=format&fit=crop&q=80" 
+            alt="Volksmusiker" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?auto=format&fit=crop&q=80" 
+            alt="Akkordeon" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&q=80" 
+            alt="Zither" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1621684778124-e4189fc830bf?auto=format&fit=crop&q=80" 
+            alt="Tracht" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg">
+          <img 
+            src="https://images.unsplash.com/photo-1512053459797-38c3a066cabd?auto=format&fit=crop&q=80" 
+            alt="Alpenlandschaft" 
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </div>
       
-      <div 
-        ref={heroRef} 
-        className="folk-container relative z-10 text-center px-4 staggered-animation"
-      >
-        <span className="inline-block py-1 px-3 mb-4 text-sm tracking-wide bg-folk-cream text-folk-brown rounded-full">
-          Authentic Alpine Folk Music
-        </span>
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 max-w-5xl mx-auto text-shadow">
-          Experience the Timeless Tradition of Volksmusik
-        </h1>
-        <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8">
-          A harmonious blend of traditional melodies and mountain rhythms that celebrate our cultural heritage.
-        </p>
+      <div className="absolute inset-0 z-1 flex items-center justify-center">
+        <div className="w-full max-w-5xl px-4">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+            <div 
+              ref={heroRef} 
+              className="rounded-xl bg-white/90 p-8 shadow-lg backdrop-blur-sm staggered-animation"
+            >
+              <div className="flex items-center gap-3">
+                <div className="rounded-full bg-folk-brown p-2 text-white">
+                  <Music size={24} />
+                </div>
+                <span className="text-sm font-medium tracking-wide text-folk-brown">
+                  Authentische Alpine Volksmusik
+                </span>
+              </div>
+              
+              <h1 className="mt-4 text-4xl font-bold text-folk-darkBrown sm:text-5xl lg:text-6xl">
+                Erleben Sie die zeitlose Tradition der Volksmusik
+              </h1>
+              
+              <p className="mt-6 text-lg text-gray-700">
+                Eine harmonische Mischung aus traditionellen Melodien und Bergrhythmen, die unser kulturelles Erbe zelebrieren. Mit Instrumenten wie Ziehharmonika, Zither und Hackbrett bewahren wir die musikalischen Traditionen unserer Heimat.
+              </p>
+              
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a 
+                  href="/events" 
+                  className="rounded-md bg-folk-brown px-6 py-3 text-white transition-colors hover:bg-folk-darkBrown"
+                >
+                  Unsere Auftritte
+                </a>
+                <button 
+                  onClick={scrollToAbout}
+                  className="flex items-center rounded-md border border-folk-brown px-6 py-3 text-folk-brown transition-colors hover:bg-folk-brown/10"
+                >
+                  Mehr über uns
+                </button>
+              </div>
+            </div>
+            
+            <div className="hidden justify-end md:flex">
+              <div className="relative h-[450px] w-[350px] overflow-hidden rounded-xl border-8 border-white shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1485833077593-4278bba3f11f?auto=format&fit=crop&q=80" 
+                  alt="Volksmusikanten in Tracht" 
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <button 
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-folk-cream transition-colors duration-300"
-        aria-label="Scroll to about section"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-folk-brown transition-colors duration-300 hover:text-folk-darkBrown"
+        aria-label="Zum Abschnitt 'Über uns' scrollen"
       >
         <ArrowDownCircle className="animate-bounce" size={40} />
       </button>
