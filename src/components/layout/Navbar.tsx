@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +25,6 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-  };
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'de' : 'en');
   };
 
   const navLinks = [
@@ -69,32 +65,14 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center space-x-1 px-3 py-1 rounded-full text-folk-brown bg-folk-cream/50 hover:bg-folk-cream transition-colors"
-            >
-              <Globe size={16} />
-              <span>{language === 'en' ? 'DE' : 'EN'}</span>
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-3">
-            {/* Language Toggle for Mobile */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center space-x-1 px-2 py-1 rounded-full text-folk-brown bg-folk-cream/50 hover:bg-folk-cream transition-colors"
-            >
-              <Globe size={14} />
-              <span className="text-sm">{language === 'en' ? 'DE' : 'EN'}</span>
-            </button>
-            
+          <div className="md:hidden">
             <button 
               className="p-2 text-folk-darkBrown" 
               onClick={toggleMobileMenu}
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

@@ -7,8 +7,6 @@ import Navbar from '../components/layout/Navbar';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Index = () => {
-  // We'll include useLanguage here even though we're not directly using it
-  // in this component, as it may be needed for future translations
   const { t } = useLanguage();
   
   return (
