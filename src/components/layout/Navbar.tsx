@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +27,14 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'de' : 'en');
+  };
+
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Events', path: '/events' },
-    { name: 'Contact', path: '/contact' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.events'), path: '/events' },
+    { name: t('nav.contact'), path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -63,10 +69,28 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-1 px-3 py-1 rounded-full text-folk-brown bg-folk-cream/50 hover:bg-folk-cream transition-colors"
+            >
+              <Globe size={16} />
+              <span>{language === 'en' ? 'DE' : 'EN'}</span>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Language Toggle for Mobile */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center space-x-1 px-2 py-1 rounded-full text-folk-brown bg-folk-cream/50 hover:bg-folk-cream transition-colors"
+            >
+              <Globe size={14} />
+              <span className="text-sm">{language === 'en' ? 'DE' : 'EN'}</span>
+            </button>
+            
             <button 
               className="p-2 text-folk-darkBrown" 
               onClick={toggleMobileMenu}

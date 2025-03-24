@@ -2,8 +2,11 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const ContactForm = () => {
+  const { t } = useLanguage();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +30,7 @@ const ContactForm = () => {
     
     // Simulate form submission
     setTimeout(() => {
-      toast.success('Your message has been sent!');
+      toast.success(t('contact.form.success'));
       setFormData({
         name: '',
         email: '',
@@ -41,19 +44,19 @@ const ContactForm = () => {
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5 text-folk-brown" />,
-      title: 'Email Us',
+      title: t('contact.emailUs'),
       details: 'info@volksmusikband.com',
       link: 'mailto:info@volksmusikband.com'
     },
     {
       icon: <Phone className="w-5 h-5 text-folk-brown" />,
-      title: 'Call Us',
+      title: t('contact.callUs'),
       details: '+43 123 456 789',
       link: 'tel:+43123456789'
     },
     {
       icon: <MapPin className="w-5 h-5 text-folk-brown" />,
-      title: 'Visit Us',
+      title: t('contact.visitUs'),
       details: 'Alpstrasse 123, 5020 Salzburg, Austria',
       link: 'https://maps.google.com'
     }
@@ -64,10 +67,10 @@ const ContactForm = () => {
       <div className="lg:col-span-2 space-y-8">
         <div>
           <h3 className="text-2xl font-bold text-folk-darkBrown mb-6">
-            Get in Touch
+            {t('contact.getInTouch')}
           </h3>
           <p className="text-gray-700 mb-8">
-            We'd love to hear from you! Whether you're interested in booking us for an event, have questions about our performances, or just want to say hello, we're here to help.
+            {t('contact.getInTouchText')}
           </p>
         </div>
 
@@ -91,14 +94,14 @@ const ContactForm = () => {
       <div className="lg:col-span-3">
         <div className="bg-white p-8 rounded-2xl shadow-sm">
           <h3 className="text-2xl font-bold text-folk-darkBrown mb-6">
-            Send Us a Message
+            {t('contact.sendMessage')}
           </h3>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Name
+                  {t('contact.form.name')}
                 </label>
                 <input
                   type="text"
@@ -108,13 +111,13 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-folk-brown focus:ring-folk-brown/20 focus:ring-2 focus:outline-none transition-colors"
-                  placeholder="Enter your name"
+                  placeholder={t('contact.form.name')}
                 />
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Email
+                  {t('contact.form.email')}
                 </label>
                 <input
                   type="email"
@@ -124,14 +127,14 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-folk-brown focus:ring-folk-brown/20 focus:ring-2 focus:outline-none transition-colors"
-                  placeholder="Enter your email"
+                  placeholder={t('contact.form.email')}
                 />
               </div>
             </div>
             
             <div>
               <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                Subject
+                {t('contact.form.subject')}
               </label>
               <input
                 type="text"
@@ -141,13 +144,13 @@ const ContactForm = () => {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-folk-brown focus:ring-folk-brown/20 focus:ring-2 focus:outline-none transition-colors"
-                placeholder="What's this about?"
+                placeholder={t('contact.form.subjectPlaceholder')}
               />
             </div>
             
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                Message
+                {t('contact.form.message')}
               </label>
               <textarea
                 id="message"
@@ -157,7 +160,7 @@ const ContactForm = () => {
                 required
                 rows={6}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-folk-brown focus:ring-folk-brown/20 focus:ring-2 focus:outline-none transition-colors resize-none"
-                placeholder="Your message..."
+                placeholder={t('contact.form.messagePlaceholder')}
               />
             </div>
             
@@ -172,12 +175,12 @@ const ContactForm = () => {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Sending...
+                  {t('contact.form.sending')}
                 </>
               ) : (
                 <>
                   <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                  {t('contact.form.send')}
                 </>
               )}
             </button>
