@@ -4,8 +4,11 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+// GitHub Pages Projektname - muss angepasst werden auf deinen Repository-Namen
+const repoName = "band-landing-page";
+
 export default defineConfig(({ mode }) => ({
-  base: "/band-landing-page",
+  base: `/${repoName}/`,
   server: {
     host: "::",
     port: 8080,

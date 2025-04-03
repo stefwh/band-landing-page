@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Volksmusik Band</title>
+  <script type="text/javascript">
+    // Umleitung für GitHub Pages bei direkter URL-Eingabe
+    var pathSegmentsToKeep = 1;
+    var l = window.location;
+    var repoName = "band-landing-page";
+    
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      '/' + repoName + '/?p=/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+  Weiterleitung...
+</body>
+</html>
