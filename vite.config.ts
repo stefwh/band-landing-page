@@ -5,7 +5,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/your-repository-name/", // Ersetzen Sie dies mit Ihrem tatsächlichen Repository-Namen
+  // Removing the base path that was causing the 404 error
   server: {
     host: "::",
     port: 8080,
