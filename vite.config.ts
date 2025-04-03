@@ -5,7 +5,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // Removing the base path that was causing the 404 error
+  base: "/band-landing-page/",
   server: {
     host: "::",
     port: 8080,
