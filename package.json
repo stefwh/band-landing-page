@@ -84,5 +84,6 @@
   "dev": "vite",
   "build": "tsc && vite build",
   "preview": "vite preview"
-}
+ },
+  "build:dev": "vite build --mode development"
 }
